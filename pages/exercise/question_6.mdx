@@ -1,0 +1,31 @@
+## Question 6
+
+A customer is creating a site and would like their project not to be indexed by search engines. Please write a reply to the customer.
+
+## Answer
+
+Hi Customer Name,
+
+Thank you for reaching out with your request. I understand you would like to keep your site private and not indexed by search engines. We can certainly help with that.
+
+Vercel Preview Deployments are not indexed by search engines by default because the X-Robots-Tag HTTP header is set to noindex. If you are using a Custom Domain that is assigned to a non-Production Branch, however, the header X-Robots-Tag: noindex will not be set.
+
+To confirm the value of the X-Robots-Tag header, you can use the following curl (already available on most desktop devices) command in your terminal to check your Preview Deployment's headers:
+
+```curl {3} copy
+curl -I <preview-deployment-url>
+```
+
+Amongst the output, you will find an X-Robots-Tag header after executing the curl command.
+
+```
+x-robots-tag: noindex
+```
+
+For more details on how Vercel handles search engine indexing for preview deployments, please refer to our guide: [Preview deployment - Index search engines](https://vercel.com/guides/are-vercel-preview-deployment-indexed-by-search-engines)
+
+Additionally, to prevent search engines from indexing your site, you can use a robots.txt file or add meta tags to your web pages. The Next.js documentation provides a guide on how to add a robots.txt file to your root directory of your Next App to prevent search engines from indexing your site:
+
+[NextJS Documentation - Generate robots.txt file](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#generate-a-robots-file)
+
+If you need any help implementing these changes or have any other questions, please don't hesitate to ask. Thanks again.

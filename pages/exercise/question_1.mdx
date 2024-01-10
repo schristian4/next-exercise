@@ -1,0 +1,19 @@
+## Question 1
+
+Describe how you solved a challenge that one of your previous teams faced. How did you determine your solution was successful?
+
+## Answer
+
+One challenge that was brought to my attention involved a discussion occurring in the general chat between the Sales and Development teams. A customer reported an issue directly to their Sales representative. The customer was unable to use the variables feature in our API Monitor Configuration Screen for a monitor configured in the AlertSite application.
+
+This feature is to extract values from JSON and XML responses and insert these values in subsequent requests. This way you can pass session tokens, item IDs, and similar data between the requests.
+
+The communication between Sales and Development caused confusion and frustration for the client, as Development considered the issue resolved due to a prior related issue that had been fixed. The Development team pointed the issue back to the customer to resolve how they configure their API, as they could not reproduce the issue.
+
+I took the initiative to confirm the issue by scheduling a meeting with the customer to gather the appropriate information. I developed a simple Express app that returns the expected generated content and set the response header to the same headers received by the customer, "application/x-www-form-urlencoded". Using this app, I configured a monitor on the AlertSite application and verified that the issue was reproduced using my Express API. I then provided the index.js file and appropriate commands to create and run the Express app to the Development team via a tracked escalation.
+
+By creating the Express app and reproducing the issue after gathering the appropriate information from the customer, we enabled the Development Team to confirm that the content type provided by the response didn't match our syntax. We were then able to inform the customer in detail that our CodeMirror only supported HTML, JSON, and XML as parsing engines for the response and that we are looking to improve support for this content type.
+
+Success can be different depending on the scenario presented. I determined the solution was a success once we confirmed what the issue was, I was able to reproduce the issue, and the correct information was provided to workaround the issue.
+
+In conclusion, success can be perceived differently depending on the scenario presented. I deemed the solution a success once we confirmed the nature of the issue, I successfully reproduced the issue, and the correct information was provided to effectively work around the issue. This comprehensive approach not only addressed the immediate problem but also paved the way for more informed and efficient solutions in the future.

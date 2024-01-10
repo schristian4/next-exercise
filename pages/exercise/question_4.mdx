@@ -1,0 +1,41 @@
+## Question 4
+
+A customer has a project on Vercel and they want to redirect the /blog path to another website. Please write a reply to the customer. Separately, list any relevant documentation you found and any feedback or information you’d like to share about your decision making process.
+
+## Answer
+
+Hi Customer Name,
+
+Thank you for reaching out with your request regarding your project hosted on Vercel. Redirecting the /blog path to another website is a straightforward process and can be efficiently accomplished by utilizing the Edge network Redirect feature set. Since you are redirecting this path to a static website I would suggest using Configuration redirects.
+
+Configuration-based redirects can be defined in framework-specific config file or in the vercel.json file, which is located in the root of your application. The vercel.json should contain a redirects field, which is an array of redirect rules.
+
+When using Next.js, you do not need to use vercel.json. Instead, use the framework-native next.config.js to define configuration-based redirects.
+
+```json filename="vercel.json" {3} copy
+module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/path',
+        destination: 'https://www.example.com',
+        permanent: true,
+      },
+    ]
+  },
+}
+```
+
+#### Configuration breakdown
+
+- "source" specifies the path you want to redirect from, which in your case is /blog.
+- "destination" is the URL where you want to redirect your users.
+- "permanent" is set to true to indicate that this is a permanent redirect (HTTP 301), which is beneficial for SEO as it passes most of the link equity to the redirected page. If this redirect is temporary, you should set it to false.
+
+Once you've updated and deployed your vercel.json file (Next.JS: next.config.js), the redirection should be active. I would recommend testing it to ensure it's working as expected.
+
+I referred to the a documentation link on redirects, which provides comprehensive guidance on how to implement them in your project. The link has been provided below:
+
+[Vercel Documentation - Configuration Redirects](https://vercel.com/docs/edge-network/redirects#configuration-redirects)
+
+If you need any help implementing these changes or have any other questions, please don't hesitate to ask. Thanks again.
